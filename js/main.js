@@ -90,6 +90,18 @@
     function highlightActiveNav() {
         const scrollPosition = window.scrollY + navbar.offsetHeight + 100;
 
+        // Check if scrolled to bottom of page - highlight Contact
+        const isAtBottom = (window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50;
+        if (isAtBottom) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#contact') {
+                    link.classList.add('active');
+                }
+            });
+            return;
+        }
+
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
